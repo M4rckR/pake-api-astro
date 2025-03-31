@@ -1,17 +1,33 @@
 ---
 import { ClientRouter } from 'astro:transitions'
+import {siteInfo} from '../consts/site-info.ts'
 
 type Props = {
-    title: string
+    title?: string
+	image?:string
+	description?: string
 }
 
-const {title} = Astro.props
+
+const {title= siteInfo.title, description = siteInfo.description, image} = Astro.props
 ---
 
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content={Astro.generator}>
+
+	<!-- SEO -->
+	<meta name="description" content={description}>
+	<meta name="author" content={"Marcos Romero"}>
+
+	<!-- OG Meta tags -->
+	<meta property="og:title" content={title}>
+	<meta property="og:description" content={description}>
+	<meta property="og:image" content={image}>
+
+	<!-- Required -->
 	<title>{title}</title>
 	<ClientRouter/>
 </head>

@@ -1,13 +1,13 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro"
-import PokemonCard from "../components/pokemons/PokemonCard.astro"
-import "../styles/global.css"
-import type {PokemonListResponse} from  "../types"
+import PokemonCard from "@components/pokemons/PokemonCard.astro"
+import type { PokemonListResponse } from "@types"
+import MainLayout from "src/layouts/MainLayout.astro"
+import "@styles/global.css"
+
 
 const resp = await fetch('https://pokeapi.co/api/v2/pokemon')
 const data = await resp.json() as PokemonListResponse
 // const pokemonList = data.results
-
 
 
 const title = 'Pokemom Static | Home'
